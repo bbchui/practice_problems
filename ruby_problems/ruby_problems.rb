@@ -86,3 +86,46 @@ def to_camel_case(str)
     end
   end.join("")
 end
+
+# TODO: complete this class
+
+class PaginationHelper
+
+  # The constructor takes in an array of items and a integer indicating how many
+  # items fit within a single page
+  def initialize(collection, items_per_page)
+    @collection = collection
+    @items_per_page = items_per_page
+  end
+
+  def item_count
+    @collection.length
+  end
+
+  # returns the number of pages
+  def page_count
+    number_of_pages = (item_count.fdiv(@items_per_page)).ceil
+  end
+
+  # returns the number of items on the current page. page_index is zero based.
+  # this method should return -1 for page_index values that are out of range
+  def page_item_count(page_index)
+    res = (0..(page_count-1)).to_a
+    ans = 0
+    return -1 if !res.include?(page_index)
+    if page_index == res.last
+      ans = item_count % @items_per_page
+    else
+      ans = @items_per_page
+    end
+  end
+
+  # determines what page an item is on. Zero based indexes.
+  # this method should return -1 for item_index values that are out of range
+  def page_index(item_index)
+
+    ans = -1
+    return ans if item_index > @collection.length - 1 || item_index < 0
+    ans = (item_index / @items_per_page).floor
+  end
+end
