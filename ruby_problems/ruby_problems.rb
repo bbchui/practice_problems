@@ -63,4 +63,9 @@ def plural(time, num)
   end
 end
 
-p format_duration(3662)
+
+def generateHashtag(str)
+  return false if str.empty? || str.length > 139
+  str = str.split(" ").map {|word| word.capitalize}.join("")
+  "##{str}"
+end
