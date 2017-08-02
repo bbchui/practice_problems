@@ -69,3 +69,20 @@ def generateHashtag(str)
   str = str.split(" ").map {|word| word.capitalize}.join("")
   "##{str}"
 end
+
+def to_camel_case(str)
+  return "" if str.empty?
+  str = str.split("-").map.with_index do |word, i|
+    if i == 0
+      word = word
+    else
+      word = word.capitalize
+    end
+  end.join("").split("_").map.with_index do |word, i|
+    if i == 0
+      word = word
+    else
+      word = word.capitalize
+    end
+  end.join("")
+end
