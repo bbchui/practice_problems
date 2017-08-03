@@ -129,3 +129,16 @@ class PaginationHelper
     ans = (item_index / @items_per_page).floor
   end
 end
+
+
+def choose_best_sum(t, k, ls)
+    ls = ls.sort
+    res = 0
+    arr = ls.combination(k).map { |x| x.reduce(:+) }
+    arr.each do |num|
+      if num <= t && num > res
+        res = num
+      end
+    end
+    res == 0 ? nil : res
+end
