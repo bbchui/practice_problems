@@ -150,3 +150,9 @@ def jobs(file)
     p line.split(" ")[0]
   end
 end
+
+def permsol(string)
+  string.split("").permutation.to_a.map { |perm| perm.join("") }.uniq.sort
+end
+
+p permsol("aabb")
