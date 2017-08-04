@@ -142,3 +142,11 @@ def choose_best_sum(t, k, ls)
     end
     res == 0 ? nil : res
 end
+
+
+def jobs(file)
+  res = []
+  File.open(file).each do |line|
+    p line.split(" ")[0]
+  end
+end
