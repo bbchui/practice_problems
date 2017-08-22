@@ -155,4 +155,37 @@ def permsol(string)
   string.split("").permutation.to_a.map { |perm| perm.join("") }.uniq.sort
 end
 
-p permsol("aabb")
+def solution(list)
+  res = []
+  stack = [list.first]
+  i = 1
+  until i > list.length
+    p stack
+    if list[i] == stack.last + 1
+      stack.push(list[i])
+    elsif stack.length == 2
+      res.push(stack[0], stack[1])
+      stack = [list[i]]
+    elsif stack.length > 2
+      res.push("#{stack.first}-#{stack.last}")
+      stack = [list[i]]
+    else
+      res.push(stack[0])
+      stack = []
+      stack.push(list[i])
+    end
+    i += 1
+  end
+    res.push(stack[0]) if stack
+    res.join(',')
+end
+
+# p solution([-6, -3, -2, -1, 0, 1, 3, 4, 5, 7, 8, 9, 10, 11, 14, 15, 17, 18, 19, 20, 22])
+
+def tribonacci(arr, n)
+  until n == 0
+    arr = arr.push(arr[-1] + arr[-2] + arr[-3])
+    n -= 1
+  end
+  arr[0..n]
+end
