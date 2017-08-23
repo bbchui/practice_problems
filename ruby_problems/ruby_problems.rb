@@ -189,3 +189,18 @@ def tribonacci(arr, n)
   end
   arr[0..n]
 end
+
+def remove_smallest(numbers)
+  # throw NotImplementedError.new "TODO: remove_smallest"
+  min = numbers[0]
+  pos = 0
+  i = 1
+  until i >= numbers.length - 1
+    if numbers[i] < min
+      min = numbers[i]
+      pos = i
+    end
+  end
+
+  arr = numbers.slice(0, i) + numbers.slice(i + 1)
+end
