@@ -151,6 +151,8 @@ def jobs(file)
   end
 end
 
+# jobs('./jobs.txt')
+
 def permsol(string)
   string.split("").permutation.to_a.map { |perm| perm.join("") }.uniq.sort
 end
