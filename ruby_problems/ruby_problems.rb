@@ -253,3 +253,13 @@ end
 def song_decoder(song)
   song.split("WUB").delete_if {|x| x == ""}.join(" ")
 end
+
+def one_two_three(n)
+  return [0, 0] if n == 0
+  sum = ""
+  n.times {|x| sum += "1"}
+  sum2 = ""
+  (n/9).times {|x| sum2 += "9"}
+  sum2 += (n % 9).to_s unless n % 9 == 0
+  [sum2.to_i, sum.to_i]
+end
