@@ -235,3 +235,13 @@ def scramble(s1,s2)
 
   true
 end
+
+def sequence_sum(begin_number, end_number, step)
+  return 0 if begin_number > end_number
+  sum = 0
+  until begin_number > end_number
+    sum += begin_number
+    begin_number += step
+  end
+  sum
+end
