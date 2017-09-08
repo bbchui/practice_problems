@@ -245,3 +245,7 @@ def sequence_sum(begin_number, end_number, step)
   end
   sum
 end
+
+def find_it(seq)
+  seq.uniq.each {|num| return num if seq.count(num).odd?}
+end
