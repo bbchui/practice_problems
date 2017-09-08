@@ -249,3 +249,7 @@ end
 def find_it(seq)
   seq.uniq.each {|num| return num if seq.count(num).odd?}
 end
+
+def song_decoder(song)
+  song.split("WUB").delete_if {|x| x == ""}.join(" ")
+end
