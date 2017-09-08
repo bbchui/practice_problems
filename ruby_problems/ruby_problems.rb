@@ -206,3 +206,32 @@ def remove_smallest(numbers)
 
   arr = numbers.slice(0, i) + numbers.slice(i + 1)
 end
+
+def scramble(s1,s2)
+  hash1 = {}
+  hash2 = {}
+
+  s1.chars.each do |x|
+    if hash1[x]
+      hash1[x] += 1
+    else
+      hash1[x] = 1
+    end
+  end
+
+  s2.chars.each do |x|
+    if hash2[x]
+      hash2[x] += 1
+    else
+      hash2[x] = 1
+    end
+  end
+
+  hash2.each do |k, v|
+    if !hash1.include?(k) || hash1[k] < v || !hash1[k]
+      return false
+    end
+  end
+
+  true
+end
