@@ -263,3 +263,21 @@ def one_two_three(n)
   sum2 += (n % 9).to_s unless n % 9 == 0
   [sum2.to_i, sum.to_i]
 end
+
+def dirReduc(arr)
+  removed = true
+  until removed == false
+    removed = false
+    i = 0
+    until i >= arr.length - 1
+      if (arr[i] == "NORTH" && arr[i + 1] == "SOUTH") || (arr[i] == "SOUTH" && arr[i + 1] == "NORTH") || (arr[i] == "EAST" && arr[i + 1] == "WEST") || (arr[i] == "WEST" && arr[i + 1] == "EAST")
+        arr.delete_at(i)
+        arr.delete_at(i)
+        removed = true
+      else
+        i += 1
+      end
+    end
+  end
+  arr
+end
