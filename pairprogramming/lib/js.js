@@ -47,12 +47,16 @@
 function showTime() {
   let date = new Date();
   let h = date.getHours();
-  let m = date.getMinutes();
-  let s = date.getSeconds();
+  let m = addZero(date.getMinutes());
+  let s = addZero(date.getSeconds());
   let ampm = h < 12 ? " AM" : " PM";
-
+  h = addZero(h % 12);
   let time = h + ":" + m + ":" + s + ampm
   document.getElementById("clock").innerText = time
 }
-
 showTime();
+setInterval(showTime, 1000);
+
+function addZero(num) {
+  return num = num < 10 ? "0" + num : num
+}
