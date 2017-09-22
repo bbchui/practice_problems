@@ -65,9 +65,69 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-throw new Error("Module build failed: SyntaxError: Unexpected token (5:6)\n\n\u001b[0m \u001b[90m 3 | \u001b[39m  \u001b[90m// clock.remove(hours, \":\", this.minutes, \":\", this.seconds);\u001b[39m\n \u001b[90m 4 | \u001b[39m  \u001b[90m// clock.remove();\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 5 | \u001b[39m  \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mampm \u001b[33m=\u001b[39m \u001b[32m\"am\"\u001b[39m\n \u001b[90m   | \u001b[39m      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 6 | \u001b[39m  \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mhours \u001b[33m=\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mDate\u001b[39m()\u001b[33m.\u001b[39mgetHours()\u001b[33m;\u001b[39m\n \u001b[90m 7 | \u001b[39m  \u001b[36mif\u001b[39m (\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mhours \u001b[33m>\u001b[39m \u001b[35m12\u001b[39m) {\n \u001b[90m 8 | \u001b[39m    \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mampm \u001b[33m=\u001b[39m \u001b[32m\"pm\"\u001b[39m\u001b[0m\n");
+"use strict";
+
+
+// let clock = document.getElementById("root");
+// class Clock {
+//   // clock.remove(hours, ":", this.minutes, ":", this.seconds);
+//   // clock.remove();
+//   this.ampm = "am"
+//   this.hours = new Date().getHours();
+//   if (this.hours > 12) {
+//     this.ampm = "pm"
+//     this.hours = this.hours % 12
+//   }
+//
+//   if (parseInt(this.hours) < 10) {
+//     this.hours = "0" + this.hours
+//   }
+//   this.minutes = new Date().getMinutes();
+//   if (parseInt(this.minutes) < 10) {
+//     this.minutes = "0" + this.minutes
+//   }
+//   this.seconds = new Date().getSeconds();
+//   if (parseInt(this.seconds) < 10) {
+//     this.seconds = "0" + this.seconds
+//   }
+//   clock.append(this.hours, ":", this.minutes, ":", this.seconds, " ", this.ampm)
+//
+//   this.addTime = function() {
+//     this.seconds += 1
+//     if (this.seconds == 60) {
+//       this.minutes += 1
+//       this.seconds = 0
+//       if (this.minutes == 60) {
+//         this.hours += 1
+//         this.minutes = 0
+//         if (this.hours > 24) {
+//           this.hours = 0
+//         }
+//       }
+//     }
+//   }
+// }
+//
+//
+//
+// // let t = document.createTextNode(this.hours)
+// var clocksss = new Clock;
+// setInterval(clocksss.addTime(), 1000)
+
+function showTime() {
+  var date = new Date();
+  var h = date.getHours();
+  var m = date.getMinutes();
+  var s = date.getSeconds();
+  var ampm = h < 12 ? " AM" : " PM";
+
+  var time = h + ":" + m + ":" + s + ampm;
+  document.getElementById("clock").innerText = time;
+}
+
+showTime();
 
 /***/ })
 /******/ ]);
