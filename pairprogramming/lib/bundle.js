@@ -122,7 +122,7 @@ function showTime() {
   var m = addZero(date.getMinutes());
   var s = addZero(date.getSeconds());
   var ampm = h < 12 ? " AM" : " PM";
-  h = addZero(h % 12);
+  h = h === 12 || h === 0 ? 12 : addZero(h % 12);
   var time = h + ":" + m + ":" + s + ampm;
   document.getElementById("clock").innerText = time;
 }

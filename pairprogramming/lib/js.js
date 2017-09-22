@@ -50,7 +50,7 @@ function showTime() {
   let m = addZero(date.getMinutes());
   let s = addZero(date.getSeconds());
   let ampm = h < 12 ? " AM" : " PM";
-  h = addZero(h % 12);
+  h = (h === 12 || h === 0) ? 12 : addZero(h % 12);
   let time = h + ":" + m + ":" + s + ampm
   document.getElementById("clock").innerText = time
 }
