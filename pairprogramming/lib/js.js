@@ -65,29 +65,60 @@
 document.addEventListener("DOMContentLoaded", function() {
   let currentTime = new Date();
 
-  class Clock {
-    constructor() {
-      this.hour = currentTime.getHours();
-      this.minute = currentTime.getMinutes();
-      this.second = currentTime.getSeconds();
-      this.secondDisplay = document.querySelector('.clock');
-      this.render = this.render.bind(this)
+  function Clock() {
+    this.hour = currentTime.getHours();
+    this.minute = currentTime.getMinutes();
+    this.second = currentTime.getSeconds();
+
+    this.ampm = this.hours < 12 ? " AM" : " PM";
+
+    this.hour = (this.hour === 12 || h === 0) ? 12 : h % 12
+
+    this.hourDisplay = document.querySelector('.hour');
+    this.minuteDisplay = document.querySelector('.minute');
+    this.secondDisplay = document.querySelector('.second');
+    this.amPmDisplay = document.querySelector('.am-pm');
+
+    this.incrementTime = function() {
+      setInterval(this.incrementSeconds.bind(this), 1000);
     }
 
-    incrementTime() {
-      setInterval(this.incrementSeconds.bind(this), 1000)
-    }
-
-    incrementSeconds() {
-      this.seconds += 1
+    this.incrementSeconds = function() {
+      if (this.second < 59) {
+        this.second += 1;
+      } else if (this.second === 59) {
+        this.second = 0;
+        this.incrementMinutes();
+      }
       this.render();
     }
 
-    render() {
-      this.secondDisplay.innerHTML = "Hi"
+    this.incrementMinutes = function() {
+      if (this.minute < 59) {
+        this.minute += 1;
+      } else {
+        this.minute = 0;
+        this.incrementHours();
+      }
+    }
+
+    this.incrementHours = function() {
+      if (this.hour < 12) {
+        this.hour += 1;
+      } else if (this.hour === 12) {
+        this.hour = 1;
+      }
+    }
+
+    this.render = function() {
+      this.hourDisplay.innerHTML = this.hour;
+      this.minuteDisplay.innerHTML = this.minute;
+      this.secondDisplay.innerHTML = this.second;
+      this.amPmDisplay.innerHTML = this.ampm
     }
   }
-  
-  let clock = new Clock();
+
+  var clock = new Clock();
   clock.incrementTime();
+
 })

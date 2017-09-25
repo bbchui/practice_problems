@@ -70,10 +70,6 @@
 "use strict";
 
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
 // let clock = document.getElementById("root");
 // class Clock {
 //   // clock.remove(hours, ":", this.minutes, ":", this.seconds);
@@ -141,37 +137,58 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 document.addEventListener("DOMContentLoaded", function () {
   var currentTime = new Date();
 
-  var Clock = function () {
-    function Clock() {
-      _classCallCheck(this, Clock);
+  function Clock() {
+    this.hour = currentTime.getHours();
+    this.minute = currentTime.getMinutes();
+    this.second = currentTime.getSeconds();
 
-      this.hour = currentTime.getHours();
-      this.minute = currentTime.getMinutes();
-      this.second = currentTime.getSeconds();
-      this.secondDisplay = document.querySelector('.clock');
-      this.render = this.render.bind(this);
-    }
+    this.ampm = this.hours < 12 ? " AM" : " PM";
 
-    _createClass(Clock, [{
-      key: "incrementTime",
-      value: function incrementTime() {
-        setInterval(this.incrementSeconds.bind(this), 1000);
-      }
-    }, {
-      key: "incrementSeconds",
-      value: function incrementSeconds() {
-        this.seconds += 1;
-        this.render();
-      }
-    }, {
-      key: "render",
-      value: function render() {
-        this.secondDisplay.innerHTML = "Hi";
-      }
-    }]);
+    this.hour = this.hour === 12 || h === 0 ? 12 : h % 12;
 
-    return Clock;
-  }();
+    this.hourDisplay = document.querySelector('.hour');
+    this.minuteDisplay = document.querySelector('.minute');
+    this.secondDisplay = document.querySelector('.second');
+    this.amPmDisplay = document.querySelector('.am-pm');
+
+    this.incrementTime = function () {
+      setInterval(this.incrementSeconds.bind(this), 1000);
+    };
+
+    this.incrementSeconds = function () {
+      if (this.second < 59) {
+        this.second += 1;
+      } else if (this.second === 59) {
+        this.second = 0;
+        this.incrementMinutes();
+      }
+      this.render();
+    };
+
+    this.incrementMinutes = function () {
+      if (this.minute < 59) {
+        this.minute += 1;
+      } else {
+        this.minute = 0;
+        this.incrementHours();
+      }
+    };
+
+    this.incrementHours = function () {
+      if (this.hour < 12) {
+        this.hour += 1;
+      } else if (this.hour === 12) {
+        this.hour = 1;
+      }
+    };
+
+    this.render = function () {
+      this.hourDisplay.innerHTML = this.hour;
+      this.minuteDisplay.innerHTML = this.minute;
+      this.secondDisplay.innerHTML = this.second;
+      this.amPmDisplay.innerHTML = this.ampm;
+    };
+  }
 
   var clock = new Clock();
   clock.incrementTime();
