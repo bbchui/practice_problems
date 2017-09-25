@@ -44,19 +44,50 @@
 // var clocksss = new Clock;
 // setInterval(clocksss.addTime(), 1000)
 
-function showTime() {
-  let date = new Date();
-  let h = date.getHours();
-  let m = addZero(date.getMinutes());
-  let s = addZero(date.getSeconds());
-  let ampm = h < 12 ? " AM" : " PM";
-  h = (h === 12 || h === 0) ? 12 : addZero(h % 12);
-  let time = h + ":" + m + ":" + s + ampm
-  document.getElementById("clock").innerText = time
-}
-showTime();
-setInterval(showTime, 1000);
+// function showTime() {
+//   let date = new Date();
+//   let h = date.getHours();
+//   let m = addZero(date.getMinutes());
+//   let s = addZero(date.getSeconds());
+//   let ampm = h < 12 ? " AM" : " PM";
+//   h = (h === 12 || h === 0) ? 12 : addZero(h % 12);
+//   let time = h + ":" + m + ":" + s + ampm
+//   document.getElementById("clock").innerText = time
+// }
+// showTime();
+// setInterval(showTime, 1000);
+//
+// function addZero(num) {
+//   return num = num < 10 ? "0" + num : num
+// }
 
-function addZero(num) {
-  return num = num < 10 ? "0" + num : num
-}
+
+document.addEventListener("DOMContentLoaded", function() {
+  let currentTime = new Date();
+
+  class Clock {
+    constructor() {
+      this.hour = currentTime.getHours();
+      this.minute = currentTime.getMinutes();
+      this.second = currentTime.getSeconds();
+      this.secondDisplay = document.querySelector('.clock');
+      this.render = this.render.bind(this)
+    }
+
+    incrementTime() {
+      setInterval(this.incrementSeconds.bind(this), 1000)
+    }
+
+    incrementSeconds() {
+      this.seconds += 1
+      this.render();
+    }
+
+    render() {
+      this.secondDisplay.innerHTML = "Hi"
+    }
+  }
+  
+  let clock = new Clock();
+  clock.incrementTime();
+})

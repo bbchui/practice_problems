@@ -70,6 +70,10 @@
 "use strict";
 
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 // let clock = document.getElementById("root");
 // class Clock {
 //   // clock.remove(hours, ":", this.minutes, ":", this.seconds);
@@ -116,22 +120,62 @@
 // var clocksss = new Clock;
 // setInterval(clocksss.addTime(), 1000)
 
-function showTime() {
-  var date = new Date();
-  var h = date.getHours();
-  var m = addZero(date.getMinutes());
-  var s = addZero(date.getSeconds());
-  var ampm = h < 12 ? " AM" : " PM";
-  h = h === 12 || h === 0 ? 12 : addZero(h % 12);
-  var time = h + ":" + m + ":" + s + ampm;
-  document.getElementById("clock").innerText = time;
-}
-showTime();
-setInterval(showTime, 1000);
+// function showTime() {
+//   let date = new Date();
+//   let h = date.getHours();
+//   let m = addZero(date.getMinutes());
+//   let s = addZero(date.getSeconds());
+//   let ampm = h < 12 ? " AM" : " PM";
+//   h = (h === 12 || h === 0) ? 12 : addZero(h % 12);
+//   let time = h + ":" + m + ":" + s + ampm
+//   document.getElementById("clock").innerText = time
+// }
+// showTime();
+// setInterval(showTime, 1000);
+//
+// function addZero(num) {
+//   return num = num < 10 ? "0" + num : num
+// }
 
-function addZero(num) {
-  return num = num < 10 ? "0" + num : num;
-}
+
+document.addEventListener("DOMContentLoaded", function () {
+  var currentTime = new Date();
+
+  var Clock = function () {
+    function Clock() {
+      _classCallCheck(this, Clock);
+
+      this.hour = currentTime.getHours();
+      this.minute = currentTime.getMinutes();
+      this.second = currentTime.getSeconds();
+      this.secondDisplay = document.querySelector('.clock');
+      this.render = this.render.bind(this);
+    }
+
+    _createClass(Clock, [{
+      key: "incrementTime",
+      value: function incrementTime() {
+        setInterval(this.incrementSeconds.bind(this), 1000);
+      }
+    }, {
+      key: "incrementSeconds",
+      value: function incrementSeconds() {
+        this.seconds += 1;
+        this.render();
+      }
+    }, {
+      key: "render",
+      value: function render() {
+        this.secondDisplay.innerHTML = "Hi";
+      }
+    }]);
+
+    return Clock;
+  }();
+
+  var clock = new Clock();
+  clock.incrementTime();
+});
 
 /***/ })
 /******/ ]);
