@@ -281,3 +281,11 @@ def dirReduc(arr)
   end
   arr
 end
+
+def two_sum(nums, target)
+    nums.each_with_index do |x, i|
+        if nums.include?(target - x) && i != nums.index(target - x)
+            return [i, nums.index(target - x)]
+        end
+    end
+end
