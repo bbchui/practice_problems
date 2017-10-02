@@ -289,3 +289,54 @@ def two_sum(nums, target)
         end
     end
 end
+
+# public int[] twoSum(int[] nums, int target) {
+#     Map<Integer, Integer> map = new HashMap<>();
+#     for (int i = 0; i < nums.length; i++) {
+#         int complement = target - nums[i];
+#         if (map.containsKey(complement)) {
+#             return new int[] { map.get(complement), i };
+#         }
+#         map.put(nums[i], i);
+#     }
+#     throw new IllegalArgumentException("No two sum solution");
+# }
+
+# Definition for singly-linked list.
+# class ListNode
+#     attr_accessor :val, :next
+#     def initialize(val)
+#         @val = val
+#         @next = nil
+#     end
+# end
+
+# @param {ListNode} l1
+# @param {ListNode} l2
+# @return {ListNode}
+def add_two_numbers(l1, l2)
+
+    l3 = ListNode.new(0)
+    nodelist1 = l1
+    nodelist2 = l2
+    curr = l3
+    carry = 0
+    while nodelist1 != nil || nodelist2 != nil
+        x = nodelist1 != nil ? nodelist1.val : 0
+        y = nodelist2 != nil ? nodelist2.val : 0
+        sum = x + y + carry
+
+        curr.next = ListNode.new(sum % 10)
+        curr = curr.next
+
+        carry = sum / 10
+
+        nodelist1 = nodelist1 != nil ? nodelist1.next : nil
+        nodelist2 = nodelist2 != nil ? nodelist2.next : nil
+    end
+
+    if carry > 0
+        curr.next = ListNode.new(carry)
+    end
+    l3.next
+end
