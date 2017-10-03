@@ -314,29 +314,47 @@ end
 # @param {ListNode} l1
 # @param {ListNode} l2
 # @return {ListNode}
-def add_two_numbers(l1, l2)
+# def add_two_numbers(l1, l2)
+#
+#     l3 = ListNode.new(0)
+#     nodelist1 = l1
+#     nodelist2 = l2
+#     curr = l3
+#     carry = 0
+#     while nodelist1 != nil || nodelist2 != nil
+#         x = nodelist1 != nil ? nodelist1.val : 0
+#         y = nodelist2 != nil ? nodelist2.val : 0
+#         sum = x + y + carry
+#
+#         curr.next = ListNode.new(sum % 10)
+#         curr = curr.next
+#
+#         carry = sum / 10
+#
+#         nodelist1 = nodelist1 != nil ? nodelist1.next : nil
+#         nodelist2 = nodelist2 != nil ? nodelist2.next : nil
+#     end
+#
+#     if carry > 0
+#         curr.next = ListNode.new(carry)
+#     end
+#     l3.next
+# end
 
-    l3 = ListNode.new(0)
-    nodelist1 = l1
-    nodelist2 = l2
-    curr = l3
-    carry = 0
-    while nodelist1 != nil || nodelist2 != nil
-        x = nodelist1 != nil ? nodelist1.val : 0
-        y = nodelist2 != nil ? nodelist2.val : 0
-        sum = x + y + carry
-
-        curr.next = ListNode.new(sum % 10)
-        curr = curr.next
-
-        carry = sum / 10
-
-        nodelist1 = nodelist1 != nil ? nodelist1.next : nil
-        nodelist2 = nodelist2 != nil ? nodelist2.next : nil
+def length_of_longest_substring(s)
+    start = 0
+    i = 0
+    longest = 0
+    map = Hash.new(0)
+    while i < s.length
+        if map[s[i]] == 0
+            longest = longest > (i - start + 1) ? longest : (i - start + 1)
+            map[s[i]] += 1
+            i += 1
+        else
+            map[s[start]] -= 1
+            start += 1
+        end
     end
-
-    if carry > 0
-        curr.next = ListNode.new(carry)
-    end
-    l3.next
+    longest
 end
