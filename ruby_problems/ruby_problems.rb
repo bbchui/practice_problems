@@ -341,19 +341,63 @@ end
 #     l3.next
 # end
 
-def length_of_longest_substring(s)
-    start = 0
+# def length_of_longest_substring(s)
+#     start = 0
+#     i = 0
+#     longest = 0
+#     map = Hash.new(0)
+#     while i < s.length
+#         if map[s[i]] == 0
+#             longest = longest > (i - start + 1) ? longest : (i - start + 1)
+#             map[s[i]] += 1
+#             i += 1
+#         else
+#             map[s[start]] -= 1
+#             start += 1
+#         end
+#     end
+#     longest
+# end
+
+def longest_palindrome(s) #longest palindrome using dynamic programming
+    return 0 if s.length == 0
     i = 0
-    longest = 0
-    map = Hash.new(0)
-    while i < s.length
-        if map[s[i]] == 0
-            longest = longest > (i - start + 1) ? longest : (i - start + 1)
-            map[s[i]] += 1
-            i += 1
-        else
-            map[s[start]] -= 1
-            start += 1
+    tbl = []
+    word = s[0]
+    longest = 1
+    while i < s.length # single letters
+        arr = []
+        j = 0
+        while j < s.length
+            arr.push(false)
+            j += 1
+        end
+        tbl.push(arr)
+        i += 1
+    end
+    s = s.chars
+    s.each_index {|x| tbl[x][x] = true}
+    s.each_index do |x| #two same letters next to each other
+        if  s[x] == s[x + 1]
+            tbl[x][x+1] = true
+            longest = 2
+            word = s.slice(x, x + 2).join
+        end
+    end
+    k = 3 #check for lengths greater than 2
+    while k < s.length
+        j = 0 #setting starting index
+        while j < s.length - k + 1
+            l = j + k - 1 #getting end index of substring from starting index j and length k
+
+            #checking for substring from j-th index to l-th index if it is a palindrome
+            if (tbl[j + 1][l - 1] && s[j] == s[l])
+                tbl[j][l] = true
+                if k > longest
+                    longest = k
+                    word = s.slice(j, l + 1)
+                end
+            end
         end
     end
     longest
