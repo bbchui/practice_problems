@@ -359,12 +359,12 @@ end
 #     longest
 # end
 
-def longest_palindrome(s) #longest palindrome using dynamic programming
+def longest_palindrome(s)
     return 0 if s.length == 0
     i = 0
     tbl = []
-    word = s[0]
     longest = 1
+    start = 0
     while i < s.length # single letters
         arr = []
         j = 0
@@ -380,12 +380,14 @@ def longest_palindrome(s) #longest palindrome using dynamic programming
     s.each_index do |x| #two same letters next to each other
         if  s[x] == s[x + 1]
             tbl[x][x+1] = true
-            longest = 2
-            word = s.slice(x, x + 2).join
+            if 2 > longest
+                longest = 2
+                start = x
+            end
         end
     end
     k = 3 #check for lengths greater than 2
-    while k < s.length
+    while k <= s.length
         j = 0 #setting starting index
         while j < s.length - k + 1
             l = j + k - 1 #getting end index of substring from starting index j and length k
@@ -395,10 +397,12 @@ def longest_palindrome(s) #longest palindrome using dynamic programming
                 tbl[j][l] = true
                 if k > longest
                     longest = k
-                    word = s.slice(j, l + 1)
+                    start = j
                 end
             end
+            j += 1
         end
+        k += 1
     end
-    longest
+    s[start...start + longest].join
 end
