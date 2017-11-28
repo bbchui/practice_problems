@@ -359,50 +359,50 @@ end
 #     longest
 # end
 
-def longest_palindrome(s)
-    return 0 if s.length == 0
-    i = 0
-    tbl = []
-    longest = 1
-    start = 0
-    while i < s.length # single letters
-        arr = []
-        j = 0
-        while j < s.length
-            arr.push(false)
-            j += 1
-        end
-        tbl.push(arr)
-        i += 1
-    end
-    s = s.chars
-    s.each_index {|x| tbl[x][x] = true}
-    s.each_index do |x| #two same letters next to each other
-        if  s[x] == s[x + 1]
-            tbl[x][x+1] = true
-            if 2 > longest
-                longest = 2
-                start = x
-            end
-        end
-    end
-    k = 3 #check for lengths greater than 2
-    while k <= s.length
-        j = 0 #setting starting index
-        while j < s.length - k + 1
-            l = j + k - 1 #getting end index of substring from starting index j and length k
-
-            #checking for substring from j-th index to l-th index if it is a palindrome
-            if (tbl[j + 1][l - 1] && s[j] == s[l])
-                tbl[j][l] = true
-                if k > longest
-                    longest = k
-                    start = j
-                end
-            end
-            j += 1
-        end
-        k += 1
-    end
-    s[start...start + longest].join
-end
+# def longest_palindrome(s)
+#     return 0 if s.length == 0
+#     i = 0
+#     tbl = []
+#     longest = 1
+#     start = 0
+#     while i < s.length # single letters
+#         arr = []
+#         j = 0
+#         while j < s.length
+#             arr.push(false)
+#             j += 1
+#         end
+#         tbl.push(arr)
+#         i += 1
+#     end
+#     s = s.chars
+#     s.each_index {|x| tbl[x][x] = true}
+#     s.each_index do |x| #two same letters next to each other
+#         if  s[x] == s[x + 1]
+#             tbl[x][x+1] = true
+#             if 2 > longest
+#                 longest = 2
+#                 start = x
+#             end
+#         end
+#     end
+#     k = 3 #check for lengths greater than 2
+#     while k <= s.length
+#         j = 0 #setting starting index
+#         while j < s.length - k + 1
+#             l = j + k - 1 #getting end index of substring from starting index j and length k
+#
+#             #checking for substring from j-th index to l-th index if it is a palindrome
+#             if (tbl[j + 1][l - 1] && s[j] == s[l])
+#                 tbl[j][l] = true
+#                 if k > longest
+#                     longest = k
+#                     start = j
+#                 end
+#             end
+#             j += 1
+#         end
+#         k += 1
+#     end
+#     s[start...start + longest].join
+# end
