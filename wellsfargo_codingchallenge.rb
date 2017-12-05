@@ -41,3 +41,9 @@ end
 # fib_to_hundred(100)
 
 # Write a Java program to calculate Factorial of a number in Java?
+def factorial(n)
+  return 1 if n == 1
+  ans = n * factorial(n - 1)
+end
+
+# p factorial(5)
