@@ -53,33 +53,61 @@
 // }
 //
 // coinChange(6, [1,5])
+//
+// function hourglass(arr) {
+//   let max = -63
+//   for (let i = 0; i < 3; i++) {
+//     for (let j = 0; j < 4; j++) {
+//       let sum = arr[i][j] + arr[i][j+1] + arr[i][j+2] + arr[i+1][j+1] + arr[i+2][j] + arr[i+2][j+1] + arr[i+2][j+2]
+//       console.log(sum);
+//       max = sum > max ? sum : max
+//     }
+//   }
+//   console.log(max);
+// }
+//
+// let arr1 = [[1,1,1,0,0,0],
+//            [0,1,0,0,0,0],
+//            [1,1,1,0,0,0],
+//            [0,9,2,-4,-4,0],
+//            [0,0,0,-2,0,0],
+//            [0,0,-1,-2,-4,0]]
+//
+// // hourglass(arr1)
+//
+// let arr2 = [[-1,1,-1,0,0,0],
+//             [0,-1,0,0,0,0],
+//             [-1,-1,-1,0,0,0],
+//             [0,-9,2,-4,-4,0],
+//             [-7,0,0,-2,0,0],
+//             [0,0,-1,-2,-4,0]]
+//
+// hourglass(arr2)
 
-function hourglass(arr) {
-  let max = -63
-  for (let i = 0; i < 3; i++) {
-    for (let j = 0; j < 4; j++) {
-      let sum = arr[i][j] + arr[i][j+1] + arr[i][j+2] + arr[i+1][j+1] + arr[i+2][j] + arr[i+2][j+1] + arr[i+2][j+2]
-      console.log(sum);
-      max = sum > max ? sum : max
-    }
-  }
-  console.log(max);
-}
 
-let arr1 = [[1,1,1,0,0,0],
-           [0,1,0,0,0,0],
-           [1,1,1,0,0,0],
-           [0,9,2,-4,-4,0],
-           [0,0,0,-2,0,0],
-           [0,0,-1,-2,-4,0]]
+// function setup() {
+//   loadJSON('http://letsrevolutionizetesting.com/challenge', gotData, 'jsonp')
+// }
+//
+// function gotData(data) {
+//   console.log(data)
+// }
 
-// hourglass(arr1)
+// let url = 'http://letsrevolutionizetesting.com/challenge'
+//
+// function httpGetAsync(theUrl, callback) {
+//     var xmlHttp = new XMLHttpRequest();
+//     xmlHttp.onreadystatechange = function() {
+//         if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+//             callback(xmlHttp.responseText);
+//     }
+//     xmlHttp.open("GET", theUrl, true); // true for asynchronous
+//     xmlHttp.send(null);
+// }
+//
+// console.log(httpGetAsync(url))
 
-let arr2 = [[-1,1,-1,0,0,0],
-            [0,-1,0,0,0,0],
-            [-1,-1,-1,0,0,0],
-            [0,-9,2,-4,-4,0],
-            [-7,0,0,-2,0,0],
-            [0,0,-1,-2,-4,0]]
-
-hourglass(arr2)
+// let arr1 = [1,3,4,2,6,5]
+//
+// arr1 = arr1.sort((a,b) => a - b)
+// console.log(arr1);
