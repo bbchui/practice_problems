@@ -155,42 +155,62 @@
 // console.log(longestPalindrome('cccd'));
 
 
-const zigzagConvert = (str, row) => {
-  if (row === 1) {return str}
-  let res = [];
-  for (let i = 0; i < row; i++) {
-    res.push([])
-  }
+// const zigzagConvert = (str, row) => {
+//   if (row === 1) {return str}
+//   let res = [];
+//   for (let i = 0; i < row; i++) {
+//     res.push([])
+//   }
+//
+//   let counter = 0
+//   let pos = true
+//   for (let i = 0; i < str.length; i++) {
+//     if (pos) {
+//       res[counter].push(str[i])
+//       if (counter >= row - 1) {
+//         pos = false
+//         counter -= 1
+//       } else {
+//         counter += 1
+//       }
+//     } else {
+//       res[counter].push(str[i])
+//       if (counter === 0) {
+//         pos = true
+//         counter += 1
+//       } else {
+//         counter -= 1
+//       }
+//     }
+//   }
+//
+//   ans = ''
+//   res = res.forEach((arr, i) => {
+//     arr = arr.join('')
+//     ans += arr
+//   })
+//
+//   return ans
+// }
+//
+// console.log(zigzagConvert("PAYPALISHIRING", 3));
 
-  let counter = 0
+const reverseInt = num => {
+  num = num.toString().split('')
   let pos = true
-  for (let i = 0; i < str.length; i++) {
-    if (pos) {
-      res[counter].push(str[i])
-      if (counter >= row - 1) {
-        pos = false
-        counter -= 1
-      } else {
-        counter += 1
-      }
-    } else {
-      res[counter].push(str[i])
-      if (counter === 0) {
-        pos = true
-        counter += 1
-      } else {
-        counter -= 1
-      }
-    }
+  if (num[0] === '-') {
+    pos = false
+  }
+  num = pos ? num : num.slice(1)
+  num = num.reverse().join('')
+
+  if (!pos) {
+    num = 0 - parseInt(num)
+    return num
+  } else {
+    return parseInt(num)
   }
 
-  ans = ''
-  res = res.forEach((arr, i) => {
-    arr = arr.join('')
-    ans += arr
-  })
-
-  return ans
 }
 
-console.log(zigzagConvert("PAYPALISHIRING", 3));
+console.log(reverseInt(-21));
