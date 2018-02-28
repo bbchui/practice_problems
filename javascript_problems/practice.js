@@ -112,44 +112,85 @@
 // arr1 = arr1.sort((a,b) => a - b)
 // console.log(arr1);
 
-const longestPalindrome = str => {
-  let n = str.length
-  let tbl = []
-  let max = 1
-  let begin = 0
-  for (let x = 0; x < str.length; x++) {
-    let row = []
-    for (let y = 0; y < str.length; y++) {
-      if (x === y) {
-        row.push(true)
+// const longestPalindrome = str => {
+//   let n = str.length
+//   let tbl = []
+//   let max = 1
+//   let begin = 0
+//   for (let x = 0; x < str.length; x++) {
+//     let row = []
+//     for (let y = 0; y < str.length; y++) {
+//       if (x === y) {
+//         row.push(true)
+//       } else {
+//         row.push(false)
+//       }
+//     }
+//     tbl.push(row)
+//   }
+//
+//   for (let i = 0; i < n - 1; i++) {
+//     if (str[i] === str[i + 1]) {
+//       tbl[i][i+1] = true;
+//       begin = i;
+//       max = 2
+//     }
+//   }
+//
+//   for (let cl = 3; cl <= n; cl++) {
+//     for (let i = 0; i < n - cl + 1; i++) {
+//       let j = i + cl - 1
+//       if (str[i] === str[j] && tbl[i + 1][j - 1]) {
+//         tbl[i][j] = true
+//         begin = i
+//         max = cl
+//       }
+//     }
+//   }
+//
+//   return str.slice(begin, begin + max)
+//
+// }
+//
+// console.log(longestPalindrome('cccd'));
+
+
+const zigzagConvert = (str, row) => {
+  if (row === 1) {return str}
+  let res = [];
+  for (let i = 0; i < row; i++) {
+    res.push([])
+  }
+
+  let counter = 0
+  let pos = true
+  for (let i = 0; i < str.length; i++) {
+    if (pos) {
+      res[counter].push(str[i])
+      if (counter >= row - 1) {
+        pos = false
+        counter -= 1
       } else {
-        row.push(false)
+        counter += 1
       }
-    }
-    tbl.push(row)
-  }
-
-  for (let i = 0; i < n - 1; i++) {
-    if (str[i] === str[i + 1]) {
-      tbl[i][i+1] = true;
-      begin = i;
-      max = 2
-    }
-  }
-
-  for (let cl = 3; cl <= n; cl++) {
-    for (let i = 0; i < n - cl + 1; i++) {
-      let j = i + cl - 1
-      if (str[i] === str[j] && tbl[i + 1][j - 1]) {
-        tbl[i][j] = true
-        begin = i
-        max = cl
+    } else {
+      res[counter].push(str[i])
+      if (counter === 0) {
+        pos = true
+        counter += 1
+      } else {
+        counter -= 1
       }
     }
   }
 
-  return str.slice(begin, begin + max)
+  ans = ''
+  res = res.forEach((arr, i) => {
+    arr = arr.join('')
+    ans += arr
+  })
 
+  return ans
 }
 
-console.log(longestPalindrome('cccd'));
+console.log(zigzagConvert("PAYPALISHIRING", 3));
