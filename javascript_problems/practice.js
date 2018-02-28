@@ -111,3 +111,45 @@
 //
 // arr1 = arr1.sort((a,b) => a - b)
 // console.log(arr1);
+
+const longestPalindrome = str => {
+  let n = str.length
+  let tbl = []
+  let max = 1
+  let begin = 0
+  for (let x = 0; x < str.length; x++) {
+    let row = []
+    for (let y = 0; y < str.length; y++) {
+      if (x === y) {
+        row.push(true)
+      } else {
+        row.push(false)
+      }
+    }
+    tbl.push(row)
+  }
+
+  for (let i = 0; i < n - 1; i++) {
+    if (str[i] === str[i + 1]) {
+      tbl[i][i+1] = true;
+      begin = i;
+      max = 2
+    }
+  }
+
+  for (let cl = 3; cl <= n; cl++) {
+    for (let i = 0; i < n - cl + 1; i++) {
+      let j = i + cl - 1
+      if (str[i] === str[j] && tbl[i + 1][j - 1]) {
+        tbl[i][j] = true
+        begin = i
+        max = cl
+      }
+    }
+  }
+
+  return str.slice(begin, begin + max)
+
+}
+
+console.log(longestPalindrome('cccd'));
