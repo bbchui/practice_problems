@@ -195,22 +195,39 @@
 //
 // console.log(zigzagConvert("PAYPALISHIRING", 3));
 
-const reverseInt = num => {
-  num = num.toString().split('')
-  let pos = true
-  if (num[0] === '-') {
-    pos = false
-  }
-  num = pos ? num : num.slice(1)
-  num = num.reverse().join('')
+// const reverseInt = num => {
+//   num = num.toString().split('')
+//   let pos = true
+//   if (num[0] === '-') {
+//     pos = false
+//   }
+//   num = pos ? num : num.slice(1)
+//   num = num.reverse().join('')
+//
+//   if (!pos) {
+//     num = 0 - parseInt(num)
+//     return num
+//   } else {
+//     return parseInt(num)
+//   }
+//
+// }
+//
+// console.log(reverseInt(-21));
 
-  if (!pos) {
-    num = 0 - parseInt(num)
-    return num
-  } else {
-    return parseInt(num)
-  }
+// for (var i = 0; i< 10; i++) {
+//   setTimeout(() => {
+//     console.log(i);
+//   }, 1000 * i)
+// }
 
-}
-
-console.log(reverseInt(-21));
+// const needle = (str, word) => {
+//   for (let i = 0; i < word.length; i++) {
+//     if (str === word.split('').slice(i, i+str.length).join('')) {
+//       return i
+//     }
+//   }
+//   return -1
+// }
+//
+// console.log(needle("str","lajnstkjfstrkjnerostruaiuz"));
