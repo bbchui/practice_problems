@@ -231,3 +231,30 @@
 // }
 //
 // console.log(needle("str","lajnstkjfstrkjnerostruaiuz"));
+
+var letterCombinations = function(digits, current = "", res = []) {
+    let dict = {2 : ['a','b','c'],
+                3 : ['d','e','f'],
+                4 : ['g','h','i'],
+                5 : ['j','k','l'],
+                6 : ['m','n','o'],
+                7 : ['p','q','r','s'],
+                8 : ['t','u','v'],
+                9 : ['w','x','y','z']}
+
+    if(digits.length === 0 && current === "") {
+        return res
+    }
+    if (digits.length < 1) {
+        return res.push(current)
+    }
+
+    let currentNumber = dict[digits[0]]
+
+    for (let i = 0; i < currentNumber.length; i++) {
+        currentLetter = dict[digits[0]][i]
+        letterCombinations(digits.slice(1), current + currentLetter, res)
+    }
+
+    return res
+};
