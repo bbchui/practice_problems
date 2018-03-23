@@ -290,23 +290,34 @@
 
 
 //fibonacci memoization
-let memoization_table = {}
+// let memoization_table = {}
+//
+// for(let i = 0; i < 50; i++) {
+//   memoization_table[i] = null
+// }
+//
+// const fib = (n) => {
+//   if (n === 0) {
+//     return 0
+//   } else if (n === 1 || n === 2) {
+//     return 1
+//   } else if (memoization_table[n]) {
+//     return memoization_table[n]
+//   }
+//
+//   memoization_table[n] = fib(n - 2) + fib(n - 1)
+//   return memoization_table[n]
+// }
+//
+// console.log(fib(40));
 
-for(let i = 0; i < 50; i++) {
-  memoization_table[i] = null
-}
-
-const fib = (n) => {
-  if (n === 0) {
-    return 0
-  } else if (n === 1 || n === 2) {
-    return 1
-  } else if (memoization_table[n]) {
-    return memoization_table[n]
-  }
-
-  memoization_table[n] = fib(n - 2) + fib(n - 1)
-  return memoization_table[n]
-}
-
-console.log(fib(40));
+// const fib = (n) => {
+//   let arr = [0,1]
+//   for (var i = 2; i <= n; i++) {
+//     arr[i] = arr[i - 2] + arr[i - 1]
+//   }
+//
+//   return arr[n]
+// }
+//
+// console.log(fib(40));
