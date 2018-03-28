@@ -321,3 +321,16 @@
 // }
 //
 // console.log(fib(40));
+
+
+// function add(x,y) {
+//   if (arguments.length === 2) {
+//     return x + y
+//   } else {
+//     return z => z + x
+//   }
+// }
+//
+//
+// console.log(add(2,3))
+// console.log(add(2)(3))
