@@ -19,7 +19,7 @@ function asy(args, cb) {
 
   for (var i = 0; i < args.length; i++) {
     (function(i) {
-      let job = jobs[i]
+      let job = jobs  [i]
       job(function(val) {
         results[i] = val
         counter++
