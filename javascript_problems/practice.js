@@ -336,9 +336,53 @@
 // console.log(add(2)(3))
 
 
-function test() {
-  console.log(x);
-}
+// function test() {
+//   console.log(x);
+// }
+//
+// var x = 5
+// test();
 
-var x = 5
-test();
+// function add(x) {
+//   let args = Array.prototype.slice.call(arguments);
+//   if (args.length > 1) {
+//     return args.reduce((a,b) => a + b, 0)
+//   } else {
+//     return function(z) {
+//       return z + x
+//     }
+//
+//   }
+// }
+//
+// console.log(add(2)(3))
+
+// a[href$=".pdf"] {
+//   color: black;
+//   background-color: white;
+// }
+//     <a href="some.pdf">some.pdf</a>
+
+// function lcp(strs) {
+//   let res = '';
+//   let base = strs[0];
+//
+//   for (let i = 1; i < strs.length; i++) {
+//     for (var j = 0; j < base.length; j++) {
+//       if (base[j] === strs[i][j]) {
+//         res = strs[i].slice(0, j + 1);
+//       } else if (j === 0 && base[j] !== strs[i][j]) {
+//         res = ''
+//         break
+//       } else {
+//         base = res;
+//         break
+//       }
+//     }
+//
+//     if (res === '') {
+//       break
+//     }
+//   }
+//   return res;
+// }
