@@ -386,3 +386,31 @@
 //   }
 //   return res;
 // }
+
+function findMagicIndex(arr, start, end) {
+  if (start >= end) {
+    return
+  }
+  let mid = Math.floor((start + end) / 2);
+
+  if (arr[mid] === mid) {
+    return mid
+  }
+
+  let left = findMagicIndex(arr, start, mid)
+  if (left > -1) {
+    return left
+  }
+
+  let right = findMagicIndex(arr, mid+1, end)
+  if (right > -1) {
+    return right
+  }
+
+  return -1
+}
+
+let arr = [-10, -5, 2, 2, 2, 3, 4, 7, 9, 12, 13]
+let end = arr.length - 1
+
+console.log(findMagicIndex(arr, 0, end));
